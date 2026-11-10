@@ -57,7 +57,7 @@ Dois públicos com o mesmo peso: cliente local de Nova Friburgo e região, e rec
 
 ## Publicação
 
-- Repositório: `github.com/pedro-augusto-xavier/portifolio` (o nome tem "i"). Cada `push` na `main` republica o site.
+- Repositório: `github.com/pedro-augusto-xavier/portfolio`. Cada `push` na `main` republica o site.
 - Vercel: projeto `pedro-xavier`, no ar em `https://pedro-xavier.vercel.app`. A variável `VITE_SITE_URL` está definida lá para produção e preview.
 - Se o Pedro registrar um domínio próprio: adicionar em Settings > Domains na Vercel e trocar `VITE_SITE_URL` (na Vercel e no `.env`).
 
