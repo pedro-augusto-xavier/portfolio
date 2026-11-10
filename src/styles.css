@@ -1599,3 +1599,36 @@ button.project-image {
     justify-content: center;
   }
 }
+
+/* Brilho atrás do título "respirando": cresce e apaga devagar */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  z-index: -1;
+  width: min(46rem, 92vw);
+  height: 26rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--glow), transparent);
+  translate: -50% -50%;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero::after {
+    animation: breathe 7s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes breathe {
+  from {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}

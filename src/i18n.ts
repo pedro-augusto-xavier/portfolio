@@ -44,7 +44,12 @@ const pt = {
       { key: 'aberto', value: ['vagas remotas', 'projetos freelance'] },
     ],
     cards: [
-      { icon: 'study', title: 'Sistemas de Informação', place: 'CEFET/RJ', detail: 'Desde 2026' },
+      {
+        icon: 'study',
+        title: 'Sistemas de Informação',
+        place: 'CEFET/RJ',
+        detail: 'Bacharelado, desde 2026. Ensino médio no Colégio Anchieta, concluído em 2023.',
+      },
       {
         icon: 'work',
         title: 'Estagiário de TI',
@@ -62,6 +67,13 @@ const pt = {
         title: 'Suporte de TI e manutenção',
         place: 'Nova Friburgo e região',
         detail: 'Conserto e manutenção de computador, rede, impressora e suporte no dia a dia.',
+      },
+      {
+        icon: 'code',
+        title: 'Cursos',
+        place: 'Python e inglês',
+        detail:
+          'Introduction to Programming Using Python no Firjan SENAI e no Senac RJ (2025). Inglês na Cultura Inglesa, concluído em 2023.',
       },
       { icon: 'language', title: 'Idiomas', place: 'Português e inglês', detail: 'Português nativo, inglês avançado.' },
     ] satisfies { icon: IconName; title: string; place: string; detail: string }[],
@@ -252,7 +264,12 @@ const en: Dict = {
       { key: 'openTo', value: ['remote roles', 'freelance projects'] },
     ],
     cards: [
-      { icon: 'study', title: 'Information Systems', place: 'CEFET/RJ', detail: 'Since 2026' },
+      {
+        icon: 'study',
+        title: 'Information Systems',
+        place: 'CEFET/RJ',
+        detail: "Bachelor's degree, since 2026. High school at Colégio Anchieta, completed in 2023.",
+      },
       {
         icon: 'work',
         title: 'IT intern',
@@ -270,6 +287,13 @@ const en: Dict = {
         title: 'IT support and repair',
         place: 'Nova Friburgo area',
         detail: 'Computer repair and maintenance, networks, printers and day-to-day support.',
+      },
+      {
+        icon: 'code',
+        title: 'Courses',
+        place: 'Python and English',
+        detail:
+          'Introduction to Programming Using Python at Firjan SENAI and at Senac RJ (2025). English at Cultura Inglesa, completed in 2023.',
       },
       {
         icon: 'language',
