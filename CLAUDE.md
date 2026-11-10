@@ -55,10 +55,12 @@ Dois públicos com o mesmo peso: cliente local de Nova Friburgo e região, e rec
 - O `index.html` tem marcas `{{...}}` preenchidas pelo plugin. No build ele também gera `dist/en/index.html`, `sitemap.xml` e `robots.txt`.
 - `VITE_SITE_URL` no `.env` é o endereço público (sem barra no final). `public/og.png` é a imagem de prévia de link (1200x630).
 
-## Pendências
+## Publicação
 
-Falta trocar `VITE_SITE_URL` no `.env` pelo domínio real; o build avisa enquanto estiver com o valor provisório.
+- Repositório: `github.com/pedro-augusto-xavier/portifolio` (o nome tem "i"). Cada `push` na `main` republica o site.
+- Vercel: projeto `pedro-xavier`, no ar em `https://pedro-xavier.vercel.app`. A variável `VITE_SITE_URL` está definida lá para produção e preview.
+- Se o Pedro registrar um domínio próprio: adicionar em Settings > Domains na Vercel e trocar `VITE_SITE_URL` (na Vercel e no `.env`).
 
 ## Ambiente
 
-Windows 11, Node 26, npm 11. Repositório git local, ainda sem remoto. Não instalar skills novas.
+Windows 11, Node 26, npm 11. Não instalar skills novas.
