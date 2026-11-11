@@ -461,6 +461,11 @@ export default function App() {
 
       <main id="conteudo">
         <section id="inicio" className="hero">
+          <div className="stars" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
           <p className="greeting">
             {t.hero.greeting}{' '}
             <span className="wave" aria-hidden="true">
@@ -517,6 +522,19 @@ export default function App() {
               ))}
             </ul>
           </div>
+        </section>
+
+        <section id="formacao" className="section" aria-labelledby="formacao-titulo">
+          <SectionHead id="formacao-titulo" title={t.education.heading} lead={t.education.lead} />
+          <ol className="timeline">
+            {t.education.items.map((item) => (
+              <li key={item.title + item.place} data-reveal>
+                <p className="timeline-year">{item.year}</p>
+                <h3>{item.title}</h3>
+                <p className="note">{item.place}</p>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section id="tecnologias" className="section" aria-labelledby="tecnologias-titulo">

@@ -44,12 +44,7 @@ const pt = {
       { key: 'aberto', value: ['vagas remotas', 'projetos freelance'] },
     ],
     cards: [
-      {
-        icon: 'study',
-        title: 'Sistemas de Informação',
-        place: 'CEFET/RJ',
-        detail: 'Bacharelado, desde 2026. Ensino médio no Colégio Anchieta, concluído em 2023.',
-      },
+      { icon: 'study', title: 'Sistemas de Informação', place: 'CEFET/RJ', detail: 'Desde 2026' },
       {
         icon: 'work',
         title: 'Estagiário de TI',
@@ -68,15 +63,19 @@ const pt = {
         place: 'Nova Friburgo e região',
         detail: 'Conserto e manutenção de computador, rede, impressora e suporte no dia a dia.',
       },
-      {
-        icon: 'code',
-        title: 'Cursos',
-        place: 'Python e inglês',
-        detail:
-          'Introduction to Programming Using Python no Firjan SENAI e no Senac RJ (2025). Inglês na Cultura Inglesa, concluído em 2023.',
-      },
       { icon: 'language', title: 'Idiomas', place: 'Português e inglês', detail: 'Português nativo, inglês avançado.' },
     ] satisfies { icon: IconName; title: string; place: string; detail: string }[],
+  },
+  education: {
+    heading: 'Formação',
+    lead: 'Onde estudei e os cursos que fiz por fora.',
+    items: [
+      { year: '2026 – atual', title: 'Bacharelado em Sistemas de Informação', place: 'CEFET/RJ' },
+      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Firjan SENAI' },
+      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Senac RJ' },
+      { year: '2023', title: 'Inglês (Standard English)', place: 'Cultura Inglesa' },
+      { year: '2023', title: 'Ensino médio', place: 'Colégio Anchieta, Nova Friburgo' },
+    ],
   },
   skills: {
     heading: 'Tecnologias',
@@ -264,12 +263,7 @@ const en: Dict = {
       { key: 'openTo', value: ['remote roles', 'freelance projects'] },
     ],
     cards: [
-      {
-        icon: 'study',
-        title: 'Information Systems',
-        place: 'CEFET/RJ',
-        detail: "Bachelor's degree, since 2026. High school at Colégio Anchieta, completed in 2023.",
-      },
+      { icon: 'study', title: 'Information Systems', place: 'CEFET/RJ', detail: 'Since 2026' },
       {
         icon: 'work',
         title: 'IT intern',
@@ -289,18 +283,22 @@ const en: Dict = {
         detail: 'Computer repair and maintenance, networks, printers and day-to-day support.',
       },
       {
-        icon: 'code',
-        title: 'Courses',
-        place: 'Python and English',
-        detail:
-          'Introduction to Programming Using Python at Firjan SENAI and at Senac RJ (2025). English at Cultura Inglesa, completed in 2023.',
-      },
-      {
         icon: 'language',
         title: 'Languages',
         place: 'Portuguese and English',
         detail: 'Native Portuguese, advanced English.',
       },
+    ],
+  },
+  education: {
+    heading: 'Education',
+    lead: 'Where I studied and the courses I took on the side.',
+    items: [
+      { year: '2026 – present', title: "Bachelor's in Information Systems", place: 'CEFET/RJ' },
+      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Firjan SENAI' },
+      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Senac RJ' },
+      { year: '2023', title: 'English (Standard English)', place: 'Cultura Inglesa' },
+      { year: '2023', title: 'High school', place: 'Colégio Anchieta, Nova Friburgo' },
     ],
   },
   skills: {

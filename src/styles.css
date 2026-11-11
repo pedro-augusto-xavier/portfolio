@@ -1110,24 +1110,12 @@ a {
   .bot-line {
     animation: rise 0.35s var(--ease) both;
   }
-
-  .hero::before {
-    animation: drift 24s linear infinite;
-  }
 }
 
 @keyframes pop {
   from {
     opacity: 0;
     transform: scale(0.92) translateY(12px);
-  }
-}
-
-@keyframes drift {
-  to {
-    background-position:
-      0 0,
-      30px 30px;
   }
 }
 
@@ -1600,35 +1588,108 @@ button.project-image {
   }
 }
 
-/* Brilho atrás do título "respirando": cresce e apaga devagar */
-.hero::after {
-  content: '';
+
+/* Pontinhos que piscam no fundo do início: três camadas de pontos sobre a
+   mesma grade de 30px, cada uma acendendo e apagando num ritmo diferente. */
+.stars {
   position: absolute;
-  top: 42%;
-  left: 50%;
+  inset: 0 50%;
   z-index: -1;
-  width: min(46rem, 92vw);
-  height: 26rem;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, var(--glow), transparent);
-  translate: -50% -50%;
+  width: 100vw;
+  translate: -50% 0;
+  mask-image: radial-gradient(60rem 34rem at 50% 45%, #000 30%, transparent 75%);
   pointer-events: none;
 }
 
+.stars span {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--accent) 1.7px, transparent 2.4px);
+  opacity: 0;
+}
+
+.stars span:nth-child(1) {
+  background-size: 150px 150px;
+}
+
+.stars span:nth-child(2) {
+  background-size: 210px 210px;
+  background-position: 60px 90px;
+}
+
+.stars span:nth-child(3) {
+  background-size: 270px 270px;
+  background-position: 120px 30px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .hero::after {
-    animation: breathe 7s ease-in-out infinite alternate;
+  .stars span {
+    animation: twinkle 4.3s ease-in-out infinite;
+  }
+
+  .stars span:nth-child(2) {
+    animation-duration: 5.9s;
+    animation-delay: -2s;
+  }
+
+  .stars span:nth-child(3) {
+    animation-duration: 7.1s;
+    animation-delay: -4.5s;
   }
 }
 
-@keyframes breathe {
-  from {
-    opacity: 0.15;
-    transform: scale(0.85);
+@keyframes twinkle {
+  50% {
+    opacity: 0.9;
   }
+}
 
-  to {
-    opacity: 1;
-    transform: scale(1.15);
-  }
+/* Formação: linha do tempo */
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 0 0 2rem;
+  list-style: none;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.3rem;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline li {
+  position: relative;
+}
+
+.timeline li::before {
+  content: '';
+  position: absolute;
+  top: 0.45rem;
+  left: -2rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.timeline-year {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.timeline h3 {
+  font-family: var(--heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
