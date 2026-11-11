@@ -18,7 +18,7 @@ Não há testes automatizados.
 ## Arquitetura
 
 - `src/i18n.ts`: todos os textos, em PT e EN. O tipo `Dict` é derivado do dicionário PT e o EN é anotado com ele, então chave faltando ou sobrando quebra o build. Sem biblioteca de i18n. O idioma vem do caminho da URL (`/` = PT, `/en/` = EN) e a troca usa `history.pushState`.
-- `src/config.ts`: contatos e links de projeto.
+- `src/config.ts`: contatos, links de projeto e o PDF do currículo de cada idioma (`public/curriculo-pedro-xavier.pdf` e `public/resume-pedro-xavier.pdf`).
 - `src/App.tsx`: a página inteira (barra, início, sobre, tecnologias, projetos, serviços, contato, rodapé).
 - `src/Bot.tsx`: robô de respostas prontas, sem IA e sem backend. Casa palavras-chave da pergunta com os tópicos de `bot.topics` no dicionário; só responde com fatos do site. Um chat com IA de verdade exigiria um servidor para guardar a chave.
 - `src/Icon.tsx`: ícones SVG inline (sem biblioteca).
@@ -27,7 +27,7 @@ Não há testes automatizados.
 
 ## Direção visual
 
-O Pedro pediu que o site siga o estilo e a estrutura de `heymufi.com`: fundo escuro azulado, destaque roxo, tudo centralizado, cartões com borda, títulos de cartão em fonte monoespaçada entre chaves, texto digitado no início. O código é próprio; não copiar código, textos nem imagens do site de referência. Uma primeira direção (nome gigante nos cantos, paleta pedra e azul) foi descartada por ele.
+A estrutura se inspira em `heymufi.com` (tudo centralizado, cartões com borda, texto digitado no início, robô no canto), mas o site foi diferenciado de propósito para não parecer cópia: destaque verde-esmeralda (a serra de Nova Friburgo) em vez de roxo, título com o nome ("Pedro Xavier") sob um prompt `$ whoami`, e títulos de cartão como comentário de código (`// Frontend`). O código é próprio; não copiar código, textos nem imagens do site de referência. Uma primeira direção (nome gigante nos cantos, paleta pedra e azul) foi descartada pelo Pedro.
 
 ## Público e posicionamento
 
@@ -53,7 +53,8 @@ Dois públicos com o mesmo peso: cliente local de Nova Friburgo e região, e rec
 
 - `src/seo.json` guarda título, descrição e dados de cada idioma; `src/i18n.ts` e o plugin `seo-pages` em `vite.config.ts` leem dali.
 - O `index.html` tem marcas `{{...}}` preenchidas pelo plugin. No build ele também gera `dist/en/index.html`, `sitemap.xml` e `robots.txt`.
-- `VITE_SITE_URL` no `.env` é o endereço público (sem barra no final). `public/og.png` é a imagem de prévia de link (1200x630).
+- `VITE_SITE_URL` no `.env` é o endereço público (sem barra no final). `public/og.png` é a imagem de prévia de link (1200x630), com a foto do Pedro.
+- No build, o plugin também injeta o script do Vercel Web Analytics (`/_vercel/insights/script.js`); ele só funciona com o Analytics ligado no painel da Vercel.
 
 ## Publicação
 

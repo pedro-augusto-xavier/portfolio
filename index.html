@@ -25,7 +25,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#0e0d1a" />
+    <meta name="theme-color" content="#0b1014" />
     <meta name="color-scheme" content="dark light" />
 
     <script type="application/ld+json">
@@ -62,7 +62,7 @@
         } catch (e) {}
         var dark = saved ? saved === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches
         root.dataset.theme = dark ? 'dark' : 'light'
-        if (!dark) document.querySelector('meta[name="theme-color"]').content = '#f6f4fc'
+        if (!dark) document.querySelector('meta[name="theme-color"]').content = '#f4f8f6'
         root.classList.add('js')
       })()
     </script>

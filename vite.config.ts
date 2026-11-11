@@ -41,6 +41,8 @@ function seoPages(site: string): Plugin {
     transformIndexHtml: {
       order: 'post',
       handler(html) {
+        // Web Analytics da Vercel: o script só existe no site publicado.
+        if (building) html = html.replace('</head>', '    <script defer src="/_vercel/insights/script.js"></script>\n  </head>')
         template = html
         return fill(html, 'pt', site)
       },

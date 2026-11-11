@@ -5,6 +5,7 @@ import { Icon, type IconName } from './Icon'
 import { dictionaries, htmlLang, langFromPath, langPath, type Dict, type Lang } from './i18n'
 import casaPessoas from './assets/casa-pessoas.webp'
 import emporioInicio from './assets/emporio-inicio.webp'
+import foto from './assets/pedro.webp'
 
 type Theme = 'light' | 'dark'
 
@@ -123,7 +124,7 @@ function CodeCard({ lines }: { lines: Dict['about']['code'] }) {
   )
 }
 
-function ContactForm({ t }: { t: Dict }) {
+function ContactForm({ t, resume }: { t: Dict; resume: string }) {
   const [name, setName] = useState('')
   const [sender, setSender] = useState('')
   const [message, setMessage] = useState('')
@@ -188,7 +189,7 @@ function ContactForm({ t }: { t: Dict }) {
           <Icon name="mail" />
           {t.contact.email}
         </button>
-        <a href={contact.resume} download className="button button-quiet">
+        <a href={resume} download className="button button-quiet">
           <Icon name="download" />
           {t.a11y.resume}
         </a>
@@ -364,7 +365,7 @@ export default function App() {
   function toggleTheme() {
     const next: Theme = theme === 'dark' ? 'light' : 'dark'
     document.documentElement.dataset.theme = next
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#0e0d1a' : '#f6f4fc')
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#0b1014' : '#f4f8f6')
     try {
       localStorage.setItem('theme', next)
     } catch {
@@ -449,7 +450,7 @@ export default function App() {
         </button>
         <span className="dock-rule dock-wide" aria-hidden="true" />
         <a
-          href={contact.resume}
+          href={contact.resume[lang]}
           download
           className="dock-item dock-wide"
           aria-label={t.a11y.resume}
@@ -466,12 +467,7 @@ export default function App() {
             <span />
             <span />
           </div>
-          <p className="greeting">
-            {t.hero.greeting}{' '}
-            <span className="wave" aria-hidden="true">
-              👋
-            </span>
-          </p>
+          <p className="greeting">{t.hero.greeting}</p>
           <h1>{t.hero.title}</h1>
           <Typed key={lang} phrases={t.hero.roles} />
           <p className="hero-lead">{t.hero.lead}</p>
@@ -494,6 +490,7 @@ export default function App() {
           <SectionHead id="sobre-titulo" title={t.about.heading} />
           <div className="about">
             <div className="about-text">
+              <img src={foto} alt={t.a11y.photo} className="about-photo" width={480} height={600} loading="lazy" decoding="async" data-reveal />
               <div className="about-prose" data-reveal>
                 <p className="about-intro">
                   {t.about.intro[0]}
@@ -604,7 +601,7 @@ export default function App() {
 
         <section id="contato" className="section" aria-labelledby="contato-titulo">
           <SectionHead id="contato-titulo" title={t.contact.heading} lead={t.contact.lead} />
-          <ContactForm t={t} />
+          <ContactForm t={t} resume={contact.resume[lang]} />
           <ul className="contact-links" data-reveal>
             <li>
               <a href={email}>

@@ -4,8 +4,8 @@ export const contact = {
   email: 'pedroaugustoxmachado@gmail.com',
   linkedin: 'https://www.linkedin.com/in/pedro-augusto-xavier-machado-bb1133345',
   github: 'https://github.com/pedro-augusto-xavier',
-  // arquivo em public/; por enquanto só existe a versão em português
-  resume: '/curriculo-pedro-xavier.pdf',
+  // arquivos em public/
+  resume: { pt: '/curriculo-pedro-xavier.pdf', en: '/resume-pedro-xavier.pdf' },
 }
 
 export const projectLinks = {
