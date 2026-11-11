@@ -62,6 +62,14 @@ Dois públicos com o mesmo peso: cliente local de Nova Friburgo e região, e rec
 - Vercel: projeto `pedro-xavier`, no ar em `https://pedro-xavier.vercel.app`. A variável `VITE_SITE_URL` está definida lá para produção e preview.
 - Se o Pedro registrar um domínio próprio: adicionar em Settings > Domains na Vercel e trocar `VITE_SITE_URL` (na Vercel e no `.env`).
 
+## Pendências (em 2026-11-11)
+
+- **Domínio do portfólio:** `pedroxavier.com.br` estava livre e foi a escolha sugerida. O Pedro vai registrar no registro.br. Depois: adicionar o domínio ao projeto `pedro-xavier` na Vercel, passar a ele os registros DNS para colar em "Editar zona" no registro.br, trocar `VITE_SITE_URL` (na Vercel e no `.env`) e republicar.
+- **Google Search Console:** fazer depois do domínio, para o site aparecer na busca pelo nome.
+- **Link do site** no LinkedIn, na bio do GitHub e nos dois currículos em PDF: tarefa do Pedro.
+- **Domínio do Empório Gigi Prado:** sugerido registrar no nome do restaurante (CNPJ ou CPF da dona), não no do Pedro. Estavam livres `emporiogigiprado.com.br`, `gigiprado.com.br` e `emporiogigi.com.br`. Quando sair, ligar ao projeto `emporio-gigi-prado` na Vercel e trocar `projectLinks.emporioSite` em `src/config.ts`.
+- **Vercel Analytics:** já ligado e funcionando no site publicado.
+
 ## Ambiente
 
 Windows 11, Node 26, npm 11. Não instalar skills novas.
