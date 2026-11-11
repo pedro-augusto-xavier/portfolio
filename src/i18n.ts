@@ -22,7 +22,7 @@ const pt = {
     greeting: 'whoami',
     title: 'Pedro Xavier',
     roles: ['desenvolvedor full stack', 'estudante de Sistemas de Informação', 'estagiário de TI', 'desenvolvedor freelancer'],
-    lead: 'Sites, sistemas e suporte de TI em Nova Friburgo e região.',
+    lead: 'Transformo problemas do dia a dia em sites e sistemas.',
     primary: 'Ver projetos',
     secondary: 'Entrar em contato',
     email: 'E-mail',
@@ -31,7 +31,7 @@ const pt = {
   emailSubject: 'Contato pelo site',
   about: {
     heading: 'Sobre mim',
-    intro: ['Olá, eu sou o ', 'Pedro', ' — crio soluções para a web e garanto que todos possam utilizá-las.'],
+    intro: ['Olá, eu sou o ', 'Pedro', ' — faço sites, sistemas e suporte de TI em Nova Friburgo e região.'],
     paragraphs: [
       'Atualmente sou estagiário de TI na Styllus Semijoias. Sou do suporte de TI e também trabalho no site e nos sistemas internos. Crio scripts escaláveis com Python, JavaScript e PHP. Meu foco está em backend, com Python, FastAPI e PostgreSQL. Fora do estágio, faço freelas de desenvolvimento para empresas e instituições, principalmente com Python, TypeScript, React, FastAPI, Fastify e PostgreSQL.',
       'Eu faço graduação em Sistemas de Informação no CEFET/RJ. Aprendi por conta própria Python, PostgreSQL e HTML — desenvolvendo projetos para empresas. Gosto de fazer sistemas que se encaixam no jeito que as pessoas já trabalham.',
@@ -244,7 +244,7 @@ const en: Dict = {
     greeting: 'whoami',
     title: 'Pedro Xavier',
     roles: ['full stack developer', 'Information Systems student', 'IT intern', 'freelance developer'],
-    lead: 'Websites, systems and IT support in and around Nova Friburgo, Brazil.',
+    lead: 'I turn everyday problems into websites and systems.',
     primary: 'See my work',
     secondary: 'Get in touch',
     email: 'Email',
@@ -253,7 +253,7 @@ const en: Dict = {
   emailSubject: 'Contact from your website',
   about: {
     heading: 'About me',
-    intro: ["Hi, I'm ", 'Pedro', ' — I build solutions for the web and make sure everyone can use them.'],
+    intro: ["Hi, I'm ", 'Pedro', ' — I build websites and systems and do IT support in and around Nova Friburgo, Brazil.'],
     paragraphs: [
       "I'm currently an IT intern at Styllus Semijoias. I'm part of IT support and I also work on the website and the internal systems. I write scalable scripts in Python, JavaScript and PHP. My focus is on backend, with Python, FastAPI and PostgreSQL. Outside the internship I take freelance development work for companies and institutions, mostly with Python, TypeScript, React, FastAPI, Fastify and PostgreSQL.",
       "I'm doing a degree in Information Systems at CEFET/RJ. I taught myself Python, PostgreSQL and HTML — building projects for companies. I like building systems that fit the way people already work.",
