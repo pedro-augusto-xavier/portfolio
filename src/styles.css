@@ -1693,3 +1693,34 @@ button.project-image {
   font-weight: 600;
   line-height: 1.35;
 }
+
+.timeline-year {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.status {
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-current {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Itens concluídos ganham a bolinha cheia; o atual fica vazado */
+.timeline li::before {
+  background: var(--accent);
+}
+
+.timeline li.timeline-current::before {
+  background: var(--bg);
+}

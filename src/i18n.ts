@@ -69,12 +69,14 @@ const pt = {
   education: {
     heading: 'Formação',
     lead: 'Onde estudei e os cursos que fiz por fora.',
+    done: 'Concluído',
+    current: 'Em andamento',
     items: [
-      { year: '2026 – atual', title: 'Bacharelado em Sistemas de Informação', place: 'CEFET/RJ' },
-      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Firjan SENAI' },
-      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Senac RJ' },
-      { year: '2023', title: 'Inglês (Standard English)', place: 'Cultura Inglesa' },
-      { year: '2023', title: 'Ensino médio', place: 'Colégio Anchieta, Nova Friburgo' },
+      { year: '2023', title: 'Ensino médio', place: 'Colégio Anchieta, Nova Friburgo', done: true },
+      { year: '2023', title: 'Inglês (Standard English)', place: 'Cultura Inglesa', done: true },
+      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Senac RJ', done: true },
+      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Firjan SENAI', done: true },
+      { year: '2026 – atual', title: 'Bacharelado em Sistemas de Informação', place: 'CEFET/RJ', done: false },
     ],
   },
   skills: {
@@ -293,12 +295,14 @@ const en: Dict = {
   education: {
     heading: 'Education',
     lead: 'Where I studied and the courses I took on the side.',
+    done: 'Completed',
+    current: 'In progress',
     items: [
-      { year: '2026 – present', title: "Bachelor's in Information Systems", place: 'CEFET/RJ' },
-      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Firjan SENAI' },
-      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Senac RJ' },
-      { year: '2023', title: 'English (Standard English)', place: 'Cultura Inglesa' },
-      { year: '2023', title: 'High school', place: 'Colégio Anchieta, Nova Friburgo' },
+      { year: '2023', title: 'High school', place: 'Colégio Anchieta, Nova Friburgo', done: true },
+      { year: '2023', title: 'English (Standard English)', place: 'Cultura Inglesa', done: true },
+      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Senac RJ', done: true },
+      { year: '2025', title: 'Introduction to Programming Using Python', place: 'Firjan SENAI', done: true },
+      { year: '2026 – present', title: "Bachelor's in Information Systems", place: 'CEFET/RJ', done: false },
     ],
   },
   skills: {

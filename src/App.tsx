@@ -528,8 +528,13 @@ export default function App() {
           <SectionHead id="formacao-titulo" title={t.education.heading} lead={t.education.lead} />
           <ol className="timeline">
             {t.education.items.map((item) => (
-              <li key={item.title + item.place} data-reveal>
-                <p className="timeline-year">{item.year}</p>
+              <li key={item.title + item.place} className={item.done ? '' : 'timeline-current'} data-reveal>
+                <p className="timeline-year">
+                  {item.year}
+                  <span className={`status${item.done ? '' : ' status-current'}`}>
+                    {item.done ? t.education.done : t.education.current}
+                  </span>
+                </p>
                 <h3>{item.title}</h3>
                 <p className="note">{item.place}</p>
               </li>
