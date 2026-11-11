@@ -1,4 +1,12 @@
-import { useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode } from 'react'
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type FormEvent,
+  type MouseEvent,
+  type ReactNode,
+} from 'react'
 import { Bot } from './Bot'
 import { contact, projectLinks } from './config'
 import { Icon, type IconName } from './Icon'
@@ -282,11 +290,19 @@ function Project({ t, onZoom, index, copy, image, stack, repo, site }: ProjectPr
 
 const sectionIds = ['inicio', 'sobre', 'tecnologias', 'projetos', 'servicos', 'contato']
 
-export default function App() {
-  const [lang, setLang] = useState<Lang>(() => langFromPath(window.location.pathname))
-  const [theme, setTheme] = useState<Theme>(() =>
-    document.documentElement.dataset.theme === 'light' ? 'light' : 'dark',
-  )
+const currentTheme = (): Theme => (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark')
+
+function watchTheme(onChange: () => void) {
+  const observer = new MutationObserver(onChange)
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+  return () => observer.disconnect()
+}
+
+export default function App({ initialLang }: { initialLang: Lang }) {
+  const [lang, setLang] = useState<Lang>(initialLang)
+  // O tema vive no data-theme do <html> (aplicado pelo script do index.html).
+  // O HTML do build sai com o escuro; o tema real é lido quando o React assume a página.
+  const theme = useSyncExternalStore(watchTheme, currentTheme, () => 'dark' as Theme)
   const [active, setActive] = useState('inicio')
   const [nearTop, setNearTop] = useState(false)
   const [zoomed, setZoomed] = useState<Zoomed | null>(null)
@@ -371,7 +387,6 @@ export default function App() {
     } catch {
       // armazenamento bloqueado: o tema vale só para esta visita
     }
-    setTheme(next)
   }
 
   const whatsapp = whatsappUrl(t.whatsappMessage)
@@ -434,7 +449,7 @@ export default function App() {
           lang={htmlLang[other]}
           className="dock-item dock-text"
           onClick={switchLang}
-          aria-label={`${t.a11y.language}: ${other === 'en' ? 'English' : 'Português'}`}
+          aria-label={`${other.toUpperCase()} (${t.a11y.language}: ${other === 'en' ? 'English' : 'Português'})`}
           title={other === 'en' ? 'English' : 'Português'}
         >
           {other.toUpperCase()}
@@ -629,7 +644,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <a href="#inicio" className="monogram" aria-label={t.a11y.top}>
+        <a href="#inicio" className="monogram" aria-label={`PX, ${t.a11y.top}`}>
           P<span>X</span>
         </a>
         {socials}

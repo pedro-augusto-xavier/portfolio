@@ -1,7 +1,8 @@
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import react from '@vitejs/plugin-react'
-import { defineConfig, loadEnv, type Plugin } from 'vite'
+import { build, defineConfig, loadEnv, type Plugin } from 'vite'
 import seo from './src/seo.json' with { type: 'json' }
 
 type Locale = keyof typeof seo
@@ -26,15 +27,34 @@ function fill(html: string, locale: Locale, site: string): string {
   })
 }
 
+// Gera o HTML da página de cada idioma com src/entry-server.tsx, num build
+// separado só para isso, que é apagado logo depois.
+async function renderPages(root: string): Promise<(locale: Locale) => string> {
+  const ssrDir = resolve(root, 'node_modules/.ssr')
+  await build({
+    configFile: false,
+    root,
+    logLevel: 'warn',
+    plugins: [react()],
+    build: { ssr: 'src/entry-server.tsx', outDir: ssrDir, emptyOutDir: true },
+  })
+  const { render } = await import(pathToFileURL(resolve(ssrDir, 'entry-server.js')).href)
+  rmSync(ssrDir, { recursive: true, force: true })
+  return render
+}
+
 // Site estático com um HTML por idioma: "/" em português e "/en/" em inglês,
 // cada um com título, descrição e Open Graph próprios, mais robots.txt e sitemap.
+// O conteúdo da página já vai no HTML; o JavaScript só assume a página depois.
 function seoPages(site: string): Plugin {
   let template = ''
+  let root = process.cwd()
   let outDir = 'dist'
   let building = false
   return {
     name: 'seo-pages',
     configResolved(config) {
+      root = config.root
       outDir = resolve(config.root, config.build.outDir)
       building = config.command === 'build'
     },
@@ -49,10 +69,17 @@ function seoPages(site: string): Plugin {
     },
     // closeBundle também roda quando o servidor de desenvolvimento fecha;
     // só o build de produção pode escrever em dist/.
-    closeBundle() {
+    async closeBundle() {
       if (!building || !template) return
-      mkdirSync(resolve(outDir, 'en'), { recursive: true })
-      writeFileSync(resolve(outDir, 'en/index.html'), fill(template, 'en', site))
+      const mount = '<div id="root"></div>'
+      if (!template.includes(mount)) throw new Error(`index.html precisa ter ${mount}`)
+      const render = await renderPages(root)
+      for (const locale of locales) {
+        const dir = resolve(outDir, `.${seo[locale].path}`)
+        mkdirSync(dir, { recursive: true })
+        const html = fill(template, locale, site).replace(mount, `<div id="root">${render(locale)}</div>`)
+        writeFileSync(resolve(dir, 'index.html'), html)
+      }
 
       const alternates = locales
         .map((l) => `    <xhtml:link rel="alternate" hreflang="${seo[l].lang}" href="${site}${seo[l].path}" />`)

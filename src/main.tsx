@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App'
+import { langFromPath } from './i18n'
 import './styles.css'
 
 console.log(
@@ -9,8 +10,13 @@ console.log(
   'color:inherit',
 )
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!
+const app = (
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <App initialLang={langFromPath(window.location.pathname)} />
+  </StrictMode>
 )
+
+// No site publicado o HTML já vem pronto do build; em desenvolvimento a página nasce vazia.
+if (root.hasChildNodes()) hydrateRoot(root, app)
+else createRoot(root).render(app)

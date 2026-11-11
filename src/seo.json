@@ -6,8 +6,7 @@
     "title": "Pedro Xavier, desenvolvedor full stack em Nova Friburgo",
     "description": "Desenvolvedor full stack em Nova Friburgo, RJ. Sites e sistemas sob medida, manutenção de computador e suporte de TI. Veja os projetos.",
     "jobTitle": "Desenvolvedor full stack",
-    "ogAlt": "Pedro Xavier, desenvolvedor full stack",
-    "noscript": "Pedro Xavier, desenvolvedor full stack em Nova Friburgo, RJ. Este site precisa de JavaScript para funcionar."
+    "ogAlt": "Pedro Xavier, desenvolvedor full stack"
   },
   "en": {
     "lang": "en",
@@ -16,7 +15,6 @@
     "title": "Pedro Xavier, full stack developer in Nova Friburgo, Brazil",
     "description": "Full stack developer in Brazil working with Python, TypeScript, React, FastAPI and PostgreSQL. See the projects and get in touch.",
     "jobTitle": "Full stack developer",
-    "ogAlt": "Pedro Xavier, full stack developer",
-    "noscript": "Pedro Xavier, full stack developer in Nova Friburgo, Brazil. This site needs JavaScript to work."
+    "ogAlt": "Pedro Xavier, full stack developer"
   }
 }
